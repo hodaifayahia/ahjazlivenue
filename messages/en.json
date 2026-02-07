@@ -1,0 +1,143 @@
+{
+    "Common": {
+        "dashboard": "Dashboard",
+        "login": "Login",
+        "register": "Register",
+        "venues": "Venues",
+        "inquiries": "Inquiries",
+        "settings": "Settings",
+        "logout": "Logout"
+    },
+    "VenuesList": {
+        "title": "Explore Venues",
+        "subtitle": "Find the perfect place for your event",
+        "empty": "No venues found.",
+        "view_details": "View Details"
+    },
+    "VenueDetails": {
+        "back_to_list": "Back to Venues",
+        "price_label": "Price",
+        "capacity_label": "Capacity",
+        "location_label": "Location",
+        "description_label": "Description",
+        "features_label": "Features",
+        "contact_owner": "Contact Owner",
+        "send_inquiry": "Send Inquiry",
+        "inquiry_sent": "Inquiry Sent!",
+        "inquiry_error": "Failed to send inquiry.",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message",
+        "send": "Send Message"
+    },
+    "NewVenue": {
+        "title": "Add New Venue",
+        "subtitle": "Fill in the details to list your venue",
+        "steps": {
+            "basic": "Basic Info",
+            "details": "Details",
+            "contact": "Contact"
+        },
+        "form": {
+            "name": "Venue Name",
+            "category": "Category",
+            "location": "Location (Wilaya)",
+            "address": "Full Address",
+            "description": "Description",
+            "capacity_min": "Min Capacity",
+            "capacity_max": "Max Capacity",
+            "price_min": "Min Price (DZD)",
+            "price_max": "Max Price (DZD)",
+            "amenities": "Amenities",
+            "photos": "Photos & Videos",
+            "phone": "Phone Number",
+            "whatsapp": "WhatsApp (if different)",
+            "email": "Email",
+            "social": "Social Media (Optional)",
+            "upload_text": "Click to upload images",
+            "upload_hint": "JPG, PNG supported"
+        },
+        "categories": {
+            "wedding_hall": "Wedding Hall",
+            "event_salon": "Event Salon",
+            "conference_room": "Conference Room",
+            "garden_outdoor": "Garden/Outdoor",
+            "villa": "Villa",
+            "hotel_ballroom": "Hotel Ballroom",
+            "restaurant": "Restaurant",
+            "rooftop": "Rooftop"
+        },
+        "buttons": {
+            "next": "Next Step",
+            "prev": "Previous",
+            "submit": "Submit for Review",
+            "submitting": "Submitting..."
+        }
+    },
+    "Login": {
+        "welcome_title": "Welcome back",
+        "welcome_subtitle": "Sign in to manage your venues or find the perfect space.",
+        "google_btn": "Continue with Google",
+        "signing_in": "Signing in...",
+        "no_account": "Don't have an account?",
+        "register_link": "List your venue",
+        "hero_title": "Find the perfect space for your next event",
+        "hero_desc": "From weddings to corporate conferences, discover and book unique venues across the country.",
+        "features": {
+            "verified": "Verified venue listings",
+            "direct": "Direct contact with owners",
+            "secure": "Secure booking",
+            "support": "Customer support"
+        }
+    },
+    "Admin": {
+        "title": "Admin Panel",
+        "nav": {
+            "dashboard": "Dashboard",
+            "venues": "Venues",
+            "users": "Users",
+            "inquiries": "Inquiries",
+            "settings": "Settings"
+        },
+        "dashboard": {
+            "title": "Admin Dashboard",
+            "subtitle": "Monitor and manage your platform"
+        },
+        "status": {
+            "pending": "Pending",
+            "approved": "Approved",
+            "rejected": "Rejected",
+            "published": "Published",
+            "active": "Active"
+        },
+        "venues": {
+            "title": "Venues Management",
+            "no_venues": "No {{status}} venues found.",
+            "price": "Price",
+            "capacity": "Capacity",
+            "guests": "guests",
+            "submitted": "Submitted",
+            "contact_price": "Contact for price",
+            "rejection_reason": "Rejection Reason",
+            "approve": "Approve",
+            "reject": "Reject",
+            "view": "View",
+            "reject_modal": {
+                "title": "Reject Venue",
+                "description": "Please provide a reason for rejecting \"{{venue}}\"",
+                "placeholder": "Enter rejection reason (e.g., missing information, doesn't meet guidelines, etc.)",
+                "cancel": "Cancel",
+                "confirm": "Reject Venue",
+                "submitting": "Rejecting..."
+            }
+        },
+        "users": {
+            "title": "Users Management",
+            "no_users": "No {{status}} users found.",
+            "approve": "Approve",
+            "reject": "Reject",
+            "view": "View Profile"
+        }
+    }
+}

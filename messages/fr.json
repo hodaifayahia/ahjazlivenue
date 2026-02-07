@@ -1,0 +1,143 @@
+{
+    "Common": {
+        "dashboard": "Tableau de bord",
+        "login": "Connexion",
+        "register": "Inscription",
+        "venues": "Salles",
+        "inquiries": "Demandes",
+        "settings": "Paramètres",
+        "logout": "Déconnexion"
+    },
+    "VenuesList": {
+        "title": "Explorer les Salles",
+        "subtitle": "Trouvez l'endroit idéal pour votre événement",
+        "empty": "Aucune salle trouvée.",
+        "view_details": "Voir les Détails"
+    },
+    "VenueDetails": {
+        "back_to_list": "Retour aux Salles",
+        "price_label": "Prix",
+        "capacity_label": "Capacité",
+        "location_label": "Lieu",
+        "description_label": "Description",
+        "features_label": "Caractéristiques",
+        "contact_owner": "Contacter le Propriétaire",
+        "send_inquiry": "Envoyer une Demande",
+        "inquiry_sent": "Demande Envoyée !",
+        "inquiry_error": "Échec de l'envoi de la demande.",
+        "name": "Nom",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "message": "Message",
+        "send": "Envoyer le Message"
+    },
+    "NewVenue": {
+        "title": "Ajouter un Lieu",
+        "subtitle": "Remplissez les détails pour lister votre lieu",
+        "steps": {
+            "basic": "Infos de base",
+            "details": "Détails",
+            "contact": "Contact"
+        },
+        "form": {
+            "name": "Nom du lieu",
+            "category": "Catégorie",
+            "location": "Lieu (Wilaya)",
+            "address": "Adresse complète",
+            "description": "Description",
+            "capacity_min": "Capacité Min",
+            "capacity_max": "Capacité Max",
+            "price_min": "Prix Min (DZD)",
+            "price_max": "Prix Max (DZD)",
+            "amenities": "Équipements",
+            "photos": "Photos & Vidéos",
+            "phone": "Numéro de téléphone",
+            "whatsapp": "WhatsApp (si différent)",
+            "email": "Email",
+            "social": "Réseaux Sociaux (Optionnel)",
+            "upload_text": "Cliquez pour télécharger des images",
+            "upload_hint": "JPG, PNG supportés"
+        },
+        "categories": {
+            "wedding_hall": "Salle des Fêtes",
+            "event_salon": "Salon Événementiel",
+            "conference_room": "Salle de Conférence",
+            "garden_outdoor": "Jardin/Extérieur",
+            "villa": "Villa",
+            "hotel_ballroom": "Salle de Bal d'Hôtel",
+            "restaurant": "Restaurant",
+            "rooftop": "Toit-terrasse"
+        },
+        "buttons": {
+            "next": "Étape Suivante",
+            "prev": "Précédent",
+            "submit": "Soumettre pour Révision",
+            "submitting": "Envoi..."
+        }
+    },
+    "Login": {
+        "welcome_title": "Bon retour",
+        "welcome_subtitle": "Connectez-vous pour gérer vos lieux ou trouver l'espace idéal.",
+        "google_btn": "Continuer avec Google",
+        "signing_in": "Connexion...",
+        "no_account": "Pas encore de compte ?",
+        "register_link": "Listez votre lieu",
+        "hero_title": "Trouvez l'espace parfait pour votre prochain événement",
+        "hero_desc": "Des mariages aux conférences d'entreprise, découvrez et réservez des lieux uniques à travers le pays.",
+        "features": {
+            "verified": "Annonces de lieux vérifiées",
+            "direct": "Contact direct avec les propriétaires",
+            "secure": "Réservation sécurisée",
+            "support": "Support client"
+        }
+    },
+    "Admin": {
+        "title": "Panneau d'Administration",
+        "nav": {
+            "dashboard": "Tableau de Bord",
+            "venues": "Salles",
+            "users": "Utilisateurs",
+            "inquiries": "Demandes",
+            "settings": "Paramètres"
+        },
+        "dashboard": {
+            "title": "Tableau de Bord Admin",
+            "subtitle": "Surveillez et gérez votre plateforme"
+        },
+        "status": {
+            "pending": "En Attente",
+            "approved": "Approuvé",
+            "rejected": "Rejeté",
+            "published": "Publié",
+            "active": "Actif"
+        },
+        "venues": {
+            "title": "Gestion des Salles",
+            "no_venues": "Aucune salle {{status}} trouvée.",
+            "price": "Prix",
+            "capacity": "Capacité",
+            "guests": "invités",
+            "submitted": "Soumis",
+            "contact_price": "Contactez pour le prix",
+            "rejection_reason": "Raison du Rejet",
+            "approve": "Approuver",
+            "reject": "Rejeter",
+            "view": "Voir",
+            "reject_modal": {
+                "title": "Rejeter la Salle",
+                "description": "Veuillez fournir une raison pour rejeter \"{{venue}}\"",
+                "placeholder": "Entrez la raison du rejet (ex: informations manquantes, ne respecte pas les directives, etc.)",
+                "cancel": "Annuler",
+                "confirm": "Rejeter la Salle",
+                "submitting": "Rejet en cours..."
+            }
+        },
+        "users": {
+            "title": "Gestion des Utilisateurs",
+            "no_users": "Aucun utilisateur {{status}} trouvé.",
+            "approve": "Approuver",
+            "reject": "Rejeter",
+            "view": "Voir le Profil"
+        }
+    }
+}
