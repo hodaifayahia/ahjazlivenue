@@ -1,15 +1,10 @@
 
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
+import { resolveSupabaseAnonKey, resolveSupabaseUrl } from "./env";
 
-const supabaseUrl =
-    process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    process.env.SUPABASE_DATABASE_URL;
-const supabaseKey =
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
-    process.env.PUBLIC_SUPABASE_ANON_KEY ||
-    process.env.SUPABASE_ANON_KEY;
+const supabaseUrl = resolveSupabaseUrl();
+const supabaseKey = resolveSupabaseAnonKey();
 
 export const createClient = (request: NextRequest) => {
     // Create an unmodified response
