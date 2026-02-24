@@ -1,7 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
-import { Emoji } from 'react-apple-emojis';
-import { useTranslations } from 'next-intl';
 
 export const dynamic = 'force-dynamic';
 
@@ -34,7 +32,7 @@ export default async function AdminInquiriesPage() {
                 {inquiries?.length === 0 ? (
                     <div className="bg-white rounded-xl border border-slate-200 p-12 text-center">
                         <div className="mb-4 opacity-50 flex justify-center">
-                            <Emoji name="envelope" width={48} />
+                            <span className="text-5xl" aria-hidden="true">✉️</span>
                         </div>
                         <p className="text-slate-500">No inquiries found.</p>
                     </div>
