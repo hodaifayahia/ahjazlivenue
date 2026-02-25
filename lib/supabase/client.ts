@@ -1,8 +1,7 @@
 import { createBrowserClient } from "@supabase/ssr";
-import { resolveSupabaseAnonKey, resolveSupabaseUrl } from "./env";
+import { getSupabaseConfig } from "./env";
 
-const supabaseUrl = resolveSupabaseUrl();
-const supabaseAnonKey = resolveSupabaseAnonKey();
+const { url: supabaseUrl, anonKey: supabaseAnonKey } = getSupabaseConfig();
 
 export const createClient = () =>
     createBrowserClient(

@@ -1,9 +1,8 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { type cookies } from "next/headers";
-import { resolveSupabaseAnonKey, resolveSupabaseUrl } from "./env";
+import { getSupabaseConfig } from "./env";
 
-const supabaseUrl = resolveSupabaseUrl();
-const supabaseKey = resolveSupabaseAnonKey();
+const { url: supabaseUrl, anonKey: supabaseKey } = getSupabaseConfig();
 
 // Type for the awaited result of cookies()
 type CookieStore = Awaited<ReturnType<typeof cookies>>;

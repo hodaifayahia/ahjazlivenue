@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 // Mock venues for browsing
 const mockVenues = [

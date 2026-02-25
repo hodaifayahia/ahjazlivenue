@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import Link from 'next/link';
 import { updateVenueStatus } from '../actions';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 import { useTranslations } from 'next-intl';
 
 interface Venue {

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageProvider';
 import Link from 'next/link';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 export default function Hero() {
     const { t } = useLanguage();

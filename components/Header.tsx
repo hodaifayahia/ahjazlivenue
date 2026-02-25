@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from './LanguageProvider';
 import { createClient } from '@/lib/supabase/client';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 export default function Header() {
     const { t, language, setLanguage, dir } = useLanguage();

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 interface CodedLandingPageProps {
     pageId: string;

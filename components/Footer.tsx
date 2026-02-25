@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 const footerLinks = {
     platform: [

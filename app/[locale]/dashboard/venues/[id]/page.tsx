@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 const categories = [
     { id: 'wedding-hall', name: 'Wedding Hall', icon: <Emoji name="wedding" width={24} /> },

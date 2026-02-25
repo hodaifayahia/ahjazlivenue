@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
 import { useLanguage } from '@/components/LanguageProvider';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 interface Profile {
     id: string;

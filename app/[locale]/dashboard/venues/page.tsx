@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { useLanguage } from '@/components/LanguageProvider';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 const statusColors = {
     approved: 'bg-green-100 text-green-700',

@@ -1,10 +1,9 @@
 
 import { createServerClient } from "@supabase/ssr";
 import { type NextRequest, NextResponse } from "next/server";
-import { resolveSupabaseAnonKey, resolveSupabaseUrl } from "./env";
+import { getSupabaseConfig } from "./env";
 
-const supabaseUrl = resolveSupabaseUrl();
-const supabaseKey = resolveSupabaseAnonKey();
+const { url: supabaseUrl, anonKey: supabaseKey } = getSupabaseConfig();
 
 export const createClient = (request: NextRequest) => {
     // Create an unmodified response

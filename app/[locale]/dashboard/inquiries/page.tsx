@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { createClient } from '@/lib/supabase/client';
 import { useLanguage } from '@/components/LanguageProvider';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 const statusColors = {
     new: 'bg-green-100 text-green-700',

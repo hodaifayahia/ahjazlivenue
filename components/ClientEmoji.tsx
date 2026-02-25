@@ -1,10 +1,10 @@
 'use client';
 
-import { Emoji } from 'react-apple-emojis';
+import NativeEmoji from '@/components/NativeEmoji';
 import { ComponentProps } from 'react';
 
-type EmojiProps = ComponentProps<typeof Emoji>;
+type EmojiProps = ComponentProps<typeof NativeEmoji>;
 
 export default function ClientEmoji(props: EmojiProps) {
-    return <Emoji {...props} />;
+    return <NativeEmoji {...props} />;
 }

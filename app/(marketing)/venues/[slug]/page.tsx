@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/client';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 // Mock venue detail - will be fetched from Supabase by slug
 const venueDetail = {

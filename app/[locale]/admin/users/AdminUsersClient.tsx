@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { updateUserStatus } from '../actions';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 import { useTranslations } from 'next-intl';
 
 interface User {

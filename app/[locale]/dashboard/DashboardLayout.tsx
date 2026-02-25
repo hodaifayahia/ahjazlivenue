@@ -7,7 +7,7 @@ import { User } from '@supabase/supabase-js';
 import { useLanguage } from '@/components/LanguageProvider';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Emoji } from 'react-apple-emojis';
+import Emoji from '@/components/NativeEmoji';
 
 interface Profile {
     full_name: string | null;
