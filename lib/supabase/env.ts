@@ -1,8 +1,8 @@
 const looksLikeHttpUrl = (value: string) =>
     value.startsWith('http://') || value.startsWith('https://');
 
-const FALLBACK_SUPABASE_URL = 'https://example.supabase.co';
-const FALLBACK_SUPABASE_ANON_KEY = 'sb_publishable_placeholder_key';
+const FALLBACK_SUPABASE_URL = 'https://nrsmpjrtagtrieujwhya.supabase.co';
+const FALLBACK_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yc21wanJ0YWd0cmlldWp3aHlhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3OTYyNjYsImV4cCI6MjA4NTM3MjI2Nn0.a7jSvSAasT1hm4Q1Y7_Rw3dtgvt74dAnJEgzKCZ8PmI';
 
 const deriveApiUrlFromDatabaseUrl = (databaseUrl: string): string | undefined => {
     const match = databaseUrl.match(/@(?:db\.)?([a-z0-9-]+)\.supabase\.co(?::\d+)?\//i);
