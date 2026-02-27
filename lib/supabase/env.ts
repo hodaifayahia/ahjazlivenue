@@ -24,14 +24,14 @@ export function resolveSupabaseUrl(): string | undefined {
 
     const databaseUrl = process.env.SUPABASE_DATABASE_URL;
     if (!databaseUrl) {
-        return undefined;
+        return FALLBACK_SUPABASE_URL;
     }
 
     if (looksLikeHttpUrl(databaseUrl)) {
         return databaseUrl;
     }
 
-    return deriveApiUrlFromDatabaseUrl(databaseUrl);
+    return deriveApiUrlFromDatabaseUrl(databaseUrl) || FALLBACK_SUPABASE_URL;
 }
 
 export function resolveSupabaseAnonKey(): string | undefined {
@@ -39,7 +39,8 @@ export function resolveSupabaseAnonKey(): string | undefined {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
         process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
         process.env.PUBLIC_SUPABASE_ANON_KEY ||
-        process.env.SUPABASE_ANON_KEY
+        process.env.SUPABASE_ANON_KEY ||
+        FALLBACK_SUPABASE_ANON_KEY
     );
 }
 
