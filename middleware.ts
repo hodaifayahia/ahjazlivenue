@@ -6,11 +6,14 @@ import { routing } from './i18n/navigation';
 export async function middleware(request: NextRequest) {
     const handleI18n = createMiddleware(routing);
 
-    // Check if path contains /dashboard or /admin (and handle locale prefix)
+    // Check if path contains /dashboard, /admin, or /salles (and handle locale prefix)
     const isProtectedRoute = routing.locales.some(loc =>
         request.nextUrl.pathname.startsWith(`/${loc}/dashboard`) ||
-        request.nextUrl.pathname.startsWith(`/${loc}/admin`)
-    ) || request.nextUrl.pathname.startsWith('/dashboard') || request.nextUrl.pathname.startsWith('/admin');
+        request.nextUrl.pathname.startsWith(`/${loc}/admin`) ||
+        request.nextUrl.pathname.startsWith(`/${loc}/salles`)
+    ) || request.nextUrl.pathname.startsWith('/dashboard') ||
+        request.nextUrl.pathname.startsWith('/admin') ||
+        request.nextUrl.pathname.startsWith('/salles');
 
     // Check if it's an auth page
     const isAuthPage = routing.locales.some(loc =>
@@ -28,6 +31,7 @@ export async function middleware(request: NextRequest) {
             const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
             const url = request.nextUrl.clone();
             url.pathname = `/${locale}/login`;
+            url.searchParams.set('redirectTo', request.nextUrl.pathname);
             return NextResponse.redirect(url);
         }
 

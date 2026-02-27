@@ -16,15 +16,17 @@ function LoginContent() {
 
     const supabase = createClient();
     const errorParam = searchParams.get('error');
+    const redirectTo = searchParams.get('redirectTo');
 
     const locale = useLocale();
 
     const handleGoogleSignIn = async () => {
         setIsLoading(true);
+        const next = redirectTo || `/${locale}/dashboard`;
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `${window.location.origin}/api/auth/callback?next=/${locale}/dashboard`,
+                redirectTo: `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(next)}`,
             },
         });
         if (error) {
