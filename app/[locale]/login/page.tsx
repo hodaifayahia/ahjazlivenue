@@ -23,10 +23,11 @@ function LoginContent() {
     const handleGoogleSignIn = async () => {
         setIsLoading(true);
         const next = redirectTo || `/${locale}/dashboard`;
+        const appOrigin = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                redirectTo: `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(next)}`,
+                redirectTo: `${appOrigin}/api/auth/callback?next=${encodeURIComponent(next)}`,
             },
         });
         if (error) {
