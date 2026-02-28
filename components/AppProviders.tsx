@@ -1,13 +1,15 @@
 'use client';
 
+import { EmojiProvider as ReactAppleEmojiProvider } from 'react-apple-emojis';
+import emojiData from 'react-apple-emojis/src/data.json';
 import { LanguageProvider } from './LanguageProvider';
-import EmojiProvider from './EmojiProvider';
 
 export default function AppProviders({ children }: { children: React.ReactNode }) {
     return (
-        <LanguageProvider>
-            <EmojiProvider />
-            {children}
-        </LanguageProvider>
+        <ReactAppleEmojiProvider data={emojiData}>
+            <LanguageProvider>
+                {children}
+            </LanguageProvider>
+        </ReactAppleEmojiProvider>
     );
 }

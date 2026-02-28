@@ -3,75 +3,63 @@ import { type NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/navigation';
 
-export async function middleware(request: NextRequest) {
-    const handleI18n = createMiddleware(routing);
+const handleI18n = createMiddleware(routing);
 
-    // Check if path contains /dashboard or /admin (protected routes)
-    // Note: /salles is now public — no auth needed for browsing venues
+export async function middleware(request: NextRequest) {
+    const pathname = request.nextUrl.pathname;
+
+    // Check if path is a protected route (dashboard/admin only)
     const isProtectedRoute = routing.locales.some(loc =>
-        request.nextUrl.pathname.startsWith(`/${loc}/dashboard`) ||
-        request.nextUrl.pathname.startsWith(`/${loc}/admin`)
-    ) || request.nextUrl.pathname.startsWith('/dashboard') ||
-        request.nextUrl.pathname.startsWith('/admin');
+        pathname.startsWith(`/${loc}/dashboard`) ||
+        pathname.startsWith(`/${loc}/admin`)
+    ) || pathname.startsWith('/dashboard') || pathname.startsWith('/admin');
 
     // Check if it's an auth page
     const isAuthPage = routing.locales.some(loc =>
-        request.nextUrl.pathname === `/${loc}/login` ||
-        request.nextUrl.pathname === `/${loc}/register`
-    ) || request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register';
+        pathname === `/${loc}/login` ||
+        pathname === `/${loc}/register`
+    ) || pathname === '/login' || pathname === '/register';
 
-    // ONLY check auth if we're on a protected route or auth page
-    if (isProtectedRoute || isAuthPage) {
-        const { supabase, response } = createClient(request);
-        const { data: { user } } = await supabase.auth.getUser();
-
-        if (!user && isProtectedRoute) {
-            // Redirect to login (maintaining locale if present, or defaulting)
-            const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
-            const url = request.nextUrl.clone();
-            url.pathname = `/${locale}/login`;
-            url.searchParams.set('redirectTo', request.nextUrl.pathname);
-            return NextResponse.redirect(url);
-        }
-
-        // Redirect authenticated users from login/register to dashboard
-        if (user && isAuthPage) {
-            const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
-
-            // Check if user is admin
-            const { data: profile } = await supabase
-                .from('profiles')
-                .select('role')
-                .eq('id', user.id)
-                .single();
-
-            const url = request.nextUrl.clone();
-            // Redirect admins to /admin, others to /dashboard
-            url.pathname = profile?.role === 'admin'
-                ? `/${locale}/admin`
-                : `/${locale}/dashboard`;
-            return NextResponse.redirect(url);
-        }
-
-        // Run i18n middleware and merge Supabase cookies
-        const i18nResponse = handleI18n(request);
-        const supabaseCookies = response.cookies.getAll();
-        supabaseCookies.forEach((cookie) => {
-            i18nResponse.cookies.set(cookie.name, cookie.value, cookie);
-        });
-        return i18nResponse;
+    // For public routes (salles, homepage, etc.) — just run i18n, NO Supabase at all
+    if (!isProtectedRoute && !isAuthPage) {
+        return handleI18n(request);
     }
 
-    // For public routes (including /salles), just run i18n middleware (no Supabase call)
-    return handleI18n(request);
+    // Only create Supabase client for protected/auth routes
+    const { supabase, response } = createClient(request);
+
+    // Use getSession() instead of getUser() — reads cookie locally, instant, no network call
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (!session && isProtectedRoute) {
+        const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
+        const url = request.nextUrl.clone();
+        url.pathname = `/${locale}/login`;
+        url.searchParams.set('redirectTo', pathname);
+        return NextResponse.redirect(url);
+    }
+
+    // Redirect authenticated users from login/register to dashboard
+    if (session && isAuthPage) {
+        const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
+        const url = request.nextUrl.clone();
+        url.pathname = `/${locale}/dashboard`;
+        return NextResponse.redirect(url);
+    }
+
+    // Run i18n middleware and merge Supabase cookies
+    const i18nResponse = handleI18n(request);
+    const supabaseCookies = response.cookies.getAll();
+    supabaseCookies.forEach((cookie) => {
+        i18nResponse.cookies.set(cookie.name, cookie.value, cookie);
+    });
+    return i18nResponse;
 }
 
 export const config = {
     matcher: [
         '/',
         '/(fr|en|ar)/:path*',
-        // Enable redirects that add missing locales
-        // (e.g. `/pathnames` -> `/en/pathnames`)
         '/((?!api|_next|_vercel|.*\\..*).*)'
     ]
 };
