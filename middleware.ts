@@ -6,14 +6,13 @@ import { routing } from './i18n/navigation';
 export async function middleware(request: NextRequest) {
     const handleI18n = createMiddleware(routing);
 
-    // Check if path contains /dashboard, /admin, or /salles (and handle locale prefix)
+    // Check if path contains /dashboard or /admin (protected routes)
+    // Note: /salles is now public — no auth needed for browsing venues
     const isProtectedRoute = routing.locales.some(loc =>
         request.nextUrl.pathname.startsWith(`/${loc}/dashboard`) ||
-        request.nextUrl.pathname.startsWith(`/${loc}/admin`) ||
-        request.nextUrl.pathname.startsWith(`/${loc}/salles`)
+        request.nextUrl.pathname.startsWith(`/${loc}/admin`)
     ) || request.nextUrl.pathname.startsWith('/dashboard') ||
-        request.nextUrl.pathname.startsWith('/admin') ||
-        request.nextUrl.pathname.startsWith('/salles');
+        request.nextUrl.pathname.startsWith('/admin');
 
     // Check if it's an auth page
     const isAuthPage = routing.locales.some(loc =>
@@ -35,7 +34,7 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(url);
         }
 
-        // Redirect authenticated users from login/register based on their role
+        // Redirect authenticated users from login/register to dashboard
         if (user && isAuthPage) {
             const locale = request.cookies.get('NEXT_LOCALE')?.value || 'en';
 
@@ -63,7 +62,7 @@ export async function middleware(request: NextRequest) {
         return i18nResponse;
     }
 
-    // For public routes, just run i18n middleware (no Supabase call)
+    // For public routes (including /salles), just run i18n middleware (no Supabase call)
     return handleI18n(request);
 }
 

@@ -6,7 +6,8 @@ export async function GET(request: NextRequest) {
     const { searchParams, origin } = new URL(request.url);
     const forwardedHost = request.headers.get('x-forwarded-host');
     const forwardedProto = request.headers.get('x-forwarded-proto') || 'https';
-    const appOrigin = forwardedHost ? `${forwardedProto}://${forwardedHost}` : origin;
+    const configuredOrigin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '');
+    const appOrigin = configuredOrigin || (forwardedHost ? `${forwardedProto}://${forwardedHost}` : null) || 'https://app.ahjazliqaati.com';
     const code = searchParams.get('code');
     const next = searchParams.get('next') ?? '/dashboard';
     const safeNext = next.startsWith('/') ? next : '/dashboard';
