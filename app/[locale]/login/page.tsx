@@ -23,7 +23,7 @@ function LoginContent() {
     const handleGoogleSignIn = async () => {
         setIsLoading(true);
         const next = redirectTo || `/${locale}/dashboard`;
-        const appOrigin = (process.env.NEXT_PUBLIC_SITE_URL || 'https://app.ahjazliqaati.com').replace(/\/$/, '');
+        const appOrigin = window.location.origin.replace(/\/$/, '');
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {

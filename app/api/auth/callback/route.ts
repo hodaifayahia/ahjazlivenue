@@ -3,11 +3,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseConfig } from '@/lib/supabase/env';
 
 export async function GET(request: NextRequest) {
-    const { searchParams, origin } = new URL(request.url);
+    const { searchParams } = new URL(request.url);
     const forwardedHost = request.headers.get('x-forwarded-host');
     const forwardedProto = request.headers.get('x-forwarded-proto') || 'https';
     const configuredOrigin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '');
-    const appOrigin = configuredOrigin || (forwardedHost ? `${forwardedProto}://${forwardedHost}` : null) || 'https://app.ahjazliqaati.com';
+    const forwardedOrigin = forwardedHost ? `${forwardedProto}://${forwardedHost}` : '';
+    const requestOrigin = new URL(request.url).origin;
+    const appOrigin = forwardedOrigin || requestOrigin || configuredOrigin || 'https://app.ahjazliqaati.com';
     const code = searchParams.get('code');
     const next = searchParams.get('next') ?? '/dashboard';
     const safeNext = next.startsWith('/') ? next : '/dashboard';
